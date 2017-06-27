@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 public class secondactivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView t1,t2,t3,t4,t5,t6,t7;
+    TextView t1,t2,t3,t4,t5,t6,t7,t8;
     int correctlocation;
-    int incorrectresult;
+    int incorrectresult,correctanswers=0,questions=0;
     ArrayList<Integer> arrayList=new ArrayList<Integer>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class secondactivity extends AppCompatActivity implements View.OnClickLis
         t5= (TextView) findViewById(R.id.textView2);
         t6= (TextView) findViewById(R.id.textView3);
         t7= (TextView) findViewById(R.id.textView4);
+        t8= (TextView) findViewById(R.id.answers);
 
          Result();
 
@@ -126,12 +127,17 @@ public class secondactivity extends AppCompatActivity implements View.OnClickLis
            if(Integer.parseInt(v.getTag().toString())==correctlocation)
            {
                Toast.makeText(this,"Correct",Toast.LENGTH_SHORT).show();
+               correctanswers++;
            }
 
            else
                if(Integer.parseInt(v.getTag().toString())!=correctlocation){
                Toast.makeText(this, "Incorrect", Toast.LENGTH_SHORT).show();
            }
+        questions++;
+       t8.setText(""+correctanswers+"/"+questions);
+
+
 Result();
     }
 }
